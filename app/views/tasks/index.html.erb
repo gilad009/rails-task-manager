@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Tasks</h1>
+  <form>
+    <% @tasks.each do |task| %>
+      <div>
+        <input type="checkbox"
+        <%= task[:completed] == true ? "checked" : "" %>
+        >
+        <%= link_to task_path(task) do %>
+        <%= task.title %><br>
+        <%= link_to "Delete", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+    <% end %>
+  </form>
+  <br>
+  <%= link_to "Create a new Task", new_task_path %>
+  </div>
